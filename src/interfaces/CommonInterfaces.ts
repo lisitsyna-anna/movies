@@ -40,3 +40,35 @@ export interface ITheme {
     round: string;
   };
 }
+
+export interface IMovie {
+  id: number;
+  title: string;
+  poster_path: string;
+  release_date: string;
+}
+
+export interface IMovieById extends IMovie {
+  genres: { id: number; name: string }[];
+  overview: string;
+  vote_average: number;
+}
+
+export interface IThrendingMoviesData {
+  page: number;
+  total_pages: number;
+  results: IMovie[];
+}
+
+export interface IActor {
+  id: number;
+  name: string;
+  profile_path: string;
+  character: string;
+}
+
+export interface IReview {
+  id: string;
+  author: string;
+  content: string;
+}

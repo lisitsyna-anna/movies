@@ -1,41 +1,17 @@
-import styled, { StyledComponent } from 'styled-components';
-import {
-  space,
-  layout,
-  color,
-  flexbox,
-  grid,
-  background,
-  border,
-  position,
-  SpaceProps,
-  LayoutProps,
-  ColorProps,
-  FlexboxProps,
-  GridProps,
-  BackgroundProps,
-  BorderProps,
-  PositionProps,
-} from 'styled-system';
+import styled from 'styled-components';
 
-type ContainerProps = SpaceProps &
-  LayoutProps &
-  ColorProps &
-  FlexboxProps &
-  GridProps &
-  BackgroundProps &
-  BorderProps &
-  PositionProps;
+export const ContainerStyled = styled.div`
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0 16px;
 
-const Container: StyledComponent<'div', any, ContainerProps> = styled.div<ContainerProps>`
-  ${space}
-  ${layout}
-  ${color}
-  ${flexbox}
-  ${grid}
-  ${background}
-  ${border}
-  ${position}
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 1200px;
+    padding: 0 100px;
+  }
 `;
-
-export default Container;
