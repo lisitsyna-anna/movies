@@ -8,6 +8,10 @@ This application is a movie search app that allows users to explore and discover
 search for movies based on keywords, and view detailed information about movies, including cast
 members and reviews. It utilizes the themoviedb.org API to fetch movie data.
 
+The application features a responsive design that ensures optimal user experience across different
+devices and screen sizes. It is designed to adapt to various screen sizes, providing a seamless and
+visually appealing interface for users on mobile devices, tablets, and desktops.s
+
 ## Features
 
 ### Home Page
