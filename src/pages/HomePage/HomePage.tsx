@@ -15,8 +15,6 @@ const HomePage: React.FC = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [isFetching, setIsFetching] = useState(false);
   const location = useLocation();
-  console.log('totalPages', totalPages);
-  console.log('trendingMovies', trendingMovies);
 
   useEffect(() => {
     async function getMovies(page: number) {
