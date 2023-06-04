@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { moviesMaper, actorsMaper, reviewsMaper } from '../helpers';
-import { IMovie, IMovieById, IActor, IReview, IThrendingMoviesData } from '../interfaces';
+import { IMovieById, IActor, IReview, IMoviesData } from '../interfaces';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 const API_KEY = '723c3471611c46346c0c4849c0dae5f2';
 export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 const TRENGING_PATH = '/trending/movie/day';
 
-export const getTrendingMovies = async (page: number): Promise<IThrendingMoviesData> => {
+export const getTrendingMovies = async (page: number): Promise<IMoviesData> => {
   const { data } = await axios(`${TRENGING_PATH}`, {
     params: {
       api_key: API_KEY,
@@ -22,7 +22,7 @@ export const getTrendingMovies = async (page: number): Promise<IThrendingMoviesD
   };
 };
 
-export const getMovieById = async (movieId: string): Promise<IMovieById> => {
+export const getMovieById = async (movieId: number): Promise<IMovieById> => {
   const {
     data: { id, title, poster_path, release_date, genres, overview, vote_average },
   } = await axios(`/movie/${movieId}`, {
@@ -35,17 +35,19 @@ export const getMovieById = async (movieId: string): Promise<IMovieById> => {
   return { id, title, poster_path, release_date, genres, overview, vote_average };
 };
 
-export const getCastsById = async (movieId: string): Promise<IActor[]> => {
+export const getCastsById = async (movieId: number): Promise<IActor[]> => {
   const { data } = await axios(`/movie/${movieId}/credits`, {
     params: {
       api_key: API_KEY,
       language: 'en-US',
     },
   });
-  return actorsMaper(data.cast);
+
+  const result = actorsMaper(data.cast);
+  return result;
 };
 
-export const getMovieReviews = async (movieId: string): Promise<IReview[]> => {
+export const getMovieReviews = async (movieId: number): Promise<IReview[]> => {
   const { data } = await axios(`/movie/${movieId}/reviews`, {
     params: {
       api_key: API_KEY,
@@ -53,20 +55,24 @@ export const getMovieReviews = async (movieId: string): Promise<IReview[]> => {
       page: 1,
     },
   });
-  return reviewsMaper(data.results);
+  const result = reviewsMaper(data.results);
+  return result;
 };
 
-export const getMovieByQuery = async (
-  query: string
-): Promise<Pick<IMovie, 'id' | 'title' | 'poster_path' | 'release_date'>[]> => {
+export const getMovieByQuery = async (query: string, page: number): Promise<IMoviesData> => {
   const { data } = await axios.get(`/search/movie`, {
     params: {
       api_key: API_KEY,
       language: 'en-US',
       query,
-      page: 1,
+      page,
       include_adult: false,
     },
   });
-  return moviesMaper(data.results);
+
+  return {
+    page: data.page,
+    results: moviesMaper(data.results),
+    total_pages: data.total_pages,
+  };
 };

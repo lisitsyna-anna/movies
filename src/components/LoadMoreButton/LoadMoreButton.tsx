@@ -8,7 +8,7 @@ interface ILoadMoreBtnProps {
 const LoadMoreButton: React.FC<ILoadMoreBtnProps> = ({ onLoadMore, isFetching }) => {
   return (
     <Button type="button" disabled={isFetching} onClick={onLoadMore}>
-      Load More
+      {isFetching ? 'Loading...' : 'Load More'}
     </Button>
   );
 };

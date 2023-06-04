@@ -10,6 +10,8 @@ import {
   MovieName,
   MovieImg,
   RealeseDate,
+  ImgWrapper,
+  Rating,
 } from './MoviesList.styled';
 
 interface IMovieListProps {
@@ -20,19 +22,24 @@ interface IMovieListProps {
 const MoviesList: React.FC<IMovieListProps> = ({ movies, location }) => {
   return (
     <MoviesListStyled>
-      {movies.map(({ id, title, poster_path, release_date }) => (
+      {movies.map(({ id, title, poster_path, release_date, vote_average }, index) => (
         <MovieItem key={id}>
-          <Link to={`/movies/${id}`} state={{ from: location }}>
-            <MovieImg
-              src={
-                poster_path
-                  ? IMAGE_URL + poster_path
-                  : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-'
-              }
-              alt={title}
-              loading="lazy"
-              width={250}
-            />
+          <Link to={`/serch-movie/${id}`} state={{ from: location }}>
+            <ImgWrapper>
+              <MovieImg
+                src={
+                  poster_path
+                    ? IMAGE_URL + poster_path
+                    : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-'
+                }
+                alt={title}
+                loading="lazy"
+                width={288}
+                height={432}
+              />
+              <Rating>{vote_average.toFixed(1)} </Rating>
+            </ImgWrapper>
+
             <MovieInfo>
               <MovieName>{title ? title : 'There is no title here yet. '}</MovieName>
               <RealeseDate>

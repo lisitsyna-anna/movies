@@ -56,9 +56,23 @@ export const RealeseDate = styled.p`
   font-size: ${p => p.theme.fontSizes.m};
 `;
 
+export const ImgWrapper = styled.div`
+  position: relative;
+`;
+
+export const Rating = styled.p`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: ${p => p.theme.colors.accentColor};
+  color: ${p => p.theme.colors.white};
+  padding: 5px 5px;
+  border-radius: 0 10px 0 10px;
+  font-weight: ${p => p.theme.fontWeights.medium};
+`;
+
 export const MovieImg = styled.img`
   width: 100%;
-  height: 398px;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
   overflow: hidden;

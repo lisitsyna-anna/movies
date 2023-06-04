@@ -1,37 +1,25 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import FadeLoader from 'react-spinners/ClipLoader';
+import Loader from '../Loader';
 
 import Container from '../Container';
 import Header from '../Header';
 import Footer from '../Footer';
+import { LayoutConteiner } from './SharedLayout.styled';
 
 const SharedLayout = () => {
   return (
-    <>
+    <LayoutConteiner>
       <Header />
-      <Suspense
-        fallback={
-          <FadeLoader
-            color="#2196F3"
-            cssOverride={{
-              display: 'block',
-              margin: '0 auto',
-              height: '50px',
-              width: '5px',
-            }}
-            loading
-          />
-        }
-      >
-        <main>
+      <Suspense fallback={<Loader />}>
+        <main style={{ flex: 1 }}>
           <Container>
             <Outlet />
           </Container>
         </main>
       </Suspense>
       <Footer />
-    </>
+    </LayoutConteiner>
   );
 };
 

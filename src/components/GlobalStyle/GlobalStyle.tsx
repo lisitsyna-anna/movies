@@ -22,7 +22,6 @@ const GlobalStyle = createGlobalStyle<IGlobalStyleProps>`
     line-height: ${p => p.theme.lineHeights.body};
 
     color: ${p => p.theme.colors.primaryText};
-    padding-bottom: ${p => p.theme.space[5]}px;
     background-color: ${p => p.theme.colors.backgroundBody};
   }
   code {

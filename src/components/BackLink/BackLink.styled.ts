@@ -10,6 +10,7 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   font-weight: 500;
   text-transform: uppercase;
+  transition: color 250ms ease-in;
 
   :hover {
     color: ${p => p.theme.colors.hoverColor};

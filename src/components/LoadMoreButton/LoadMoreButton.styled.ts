@@ -8,12 +8,13 @@ export const Button = styled.button`
   border-radius: ${p => p.theme.radii.normal};
   background-color: ${p => p.theme.colors.accentColor};
   color: ${p => p.theme.colors.white};
-  font-size: ${p => p.theme.fontSizes.xl};
+  font-size: ${p => p.theme.fontSizes.l};
   font-weight: ${p => p.theme.fontWeights.medium};
   transition: background-color ease-in 250ms;
 
   @media screen and (min-width: 1200px) {
     padding: 10px 35px;
+    font-size: ${p => p.theme.fontSizes.xl};
   }
 
   &:disabled {

@@ -13,11 +13,10 @@ const HomePage: React.FC = () => {
   const [error, setError] = useState<null | string>(null);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [isShowLoadMoreBtn, setIsShowLoadMoreBtn] = useState(true);
   const [isFetching, setIsFetching] = useState(false);
   const location = useLocation();
-  console.log(totalPages);
-  console.log(setIsShowLoadMoreBtn);
+  console.log('totalPages', totalPages);
+  console.log('trendingMovies', trendingMovies);
 
   useEffect(() => {
     async function getMovies(page: number) {
@@ -46,14 +45,14 @@ const HomePage: React.FC = () => {
     setPage(prevPage => prevPage + 1);
   };
 
+  const showLoadMore = totalPages !== page && !error && trendingMovies.length > 0;
+
   return (
     <>
       <Title>Trending today</Title>
       {error && <RequestError />}
       {trendingMovies?.length > 0 && <MoviesList movies={trendingMovies} location={location} />}
-      {isShowLoadMoreBtn && (
-        <LoadMoreButton onLoadMore={handleLoadMoreBtn} isFetching={isFetching} />
-      )}
+      {showLoadMore && <LoadMoreButton onLoadMore={handleLoadMoreBtn} isFetching={isFetching} />}
     </>
   );
 };

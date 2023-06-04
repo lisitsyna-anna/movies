@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
-export const StyledError = styled.h2`
-  margin-top: ${p => p.theme.space[5]}px;
-  text-align: center;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+`;
+
+export const Title = styled.h2`
   font-size: ${p => p.theme.fontSizes.m};
 
   @media screen and (min-width: 768px) {
@@ -11,8 +18,6 @@ export const StyledError = styled.h2`
 `;
 
 export const Img = styled.img`
-  margin: 0 auto;
-
   @media screen and (min-width: 768px) {
     width: 400px;
   }

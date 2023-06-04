@@ -13,7 +13,7 @@ const Header: React.FC = () => {
               </StyledNavLink>
             </li>
             <li>
-              <StyledNavLink to="/movies">Movies</StyledNavLink>
+              <StyledNavLink to="/serch-movie">Movies</StyledNavLink>
             </li>
           </NavList>
         </nav>

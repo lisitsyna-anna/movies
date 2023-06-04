@@ -2,19 +2,42 @@ import styled from 'styled-components';
 
 export const ActorsList = styled.ul`
   display: flex;
-  flex-wrap: wrap;
-  gap: ${p => p.theme.space[5]}px;
+  flex-direction: column;
+  gap: ${p => p.theme.space[6]}px;
+
+  @media screen and (min-width: 768px) {
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: ${p => p.theme.space[4]}px;
+  }
 `;
 
 export const ActorItem = styled.li`
-  flex-basis: calc((100% - 3 * 20px) / 4);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: ${p => p.theme.radii.normal};
+  border-radius: 10px;
+  box-shadow: 7px 7px 46px -9px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 7px 7px 46px -9px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 7px 7px 46px -9px rgba(0, 0, 0, 0.35);
+
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 2 * 16px) / 3);
+  }
+
+  @media screen and (min-width: 1200px) {
+    flex-basis: calc((100% - 3 * 16px) / 4);
+  }
 `;
 
 export const ActorImg = styled.img`
   width: 100%;
-  height: 398px;
   object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+`;
+
+export const ActorInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${p => p.theme.space[3]}px;
+  padding: 16px 10px;
+  text-align: center;
 `;

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledError = styled.h2`
-  margin-top: ${p => p.theme.space[5]}px;
-  text-align: center;
+export const StyledText = styled.h3`
   font-size: ${p => p.theme.fontSizes.m};
+  text-align: center;
 
   @media screen and (min-width: 768px) {
     font-size: ${p => p.theme.fontSizes.xl};
